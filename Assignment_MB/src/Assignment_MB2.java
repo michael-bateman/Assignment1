@@ -1,11 +1,23 @@
 import java.util.Scanner;
 
+/**
+ * 
+ * @author michael.bateman
+ *
+ */
 public class Assignment_MB2 {
 	
+	/**
+	 * 
+	 */
 	public static void welcome() {
 		System.out.println("Welcome to Michael's Chemistry Game!");
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public static String selectType() {
 		
 		String selectType = "B";
@@ -24,12 +36,23 @@ public class Assignment_MB2 {
 
 	}
 	
-	public static void game() {
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public static String[] setArray() {
 		
-		welcome();
-		String type = selectType();
+		String type = selectType(); // gets the type (selection of what to play) from the selectType() method
 		
 		final String[] inputdata = new String[3];
+		
+		/*
+		 * We use the inputdata array to store important information about each file as follows:
+		 * [0] - the name of plain text file with the questions
+		 * [1] - the question that is asked
+		 * [2] - if there is a "unit" such as kg or cm, if there is no unit, do not declare it at all.
+		 */
 		
 		if (type.equals("A")) {
 			inputdata[0] = "data";
@@ -39,11 +62,26 @@ public class Assignment_MB2 {
 			inputdata[1] = "What is the element symbol with the name";
 		} else if (type.equals("C")) {
 			inputdata[0] = "data3";
-			inputdata[1] = "What is the atomic mass of the element";
+			inputdata[1] = "What is the molar mass of the element";
 			inputdata[2] = "g";
 		} else {
 			System.out.println("ERROR");
 		}
+		
+		if (inputdata[2] == null) {
+			inputdata[2] = "";
+		}
+		
+		return inputdata;
+	}
+	
+	/**
+	 * 
+	 */
+	public static void game() {
+		
+		welcome();
+		String[] inputdata = setArray();
 		
 		Question q = new Question(inputdata[0]);
 		
@@ -52,26 +90,29 @@ public class Assignment_MB2 {
 		String[] answerselect = {"A","B","C","D"};
 		
 		Scanner s = new Scanner(System.in);
-		int intinput = 1;
-		String strinput = "A";
-		int score = 0;
-		int grandom = 0;
+		
+		int intinput = 1; // used for asking how many questions a user will want to answer. NOTE- set to 1 because we don't want the conditional to activate.
+		String strinput = "A"; // sets the input to "A" so the invalid answer conditional statement does not work
+		int score = 0; // sets your score to 0
+		int grandom = 0; // used for selecting a random question
 		int arandom = 0; // for choosing shuffle order of responses
-		double scorepercent = 0.0;
+		double scorepercent = 0.0; // sets your score to 0 - note, it's a double
+		int questioncount = 0; // this is the question number to be used as a question header
 			
 		do {
-			if (intinput <= 0 || intinput > question.length) {
+			if (intinput <= 0 || intinput > question.length) { // if statement to check to see if the input is invalid
 				System.out.println("Invalid Answer... Please try again");
 			}
 			System.out.print("How many questions would you like to answer? (1 - " + question.length + "): ");
-			intinput = s.nextInt();
-		} while (intinput <= 0 || intinput > question.length);
+			intinput = s.nextInt(); // takes an int input
+		} while (intinput <= 0 || intinput > question.length); // if the statement is invalid
 		
-		int questioncount = 0;
-		for (int i = 0; i < intinput; i++) { //main questions loop
+		for (int i = 0; i < intinput; i++) { // this is the question loop
+			
 			do {
 				grandom = (int)(Math.random() * question.length); // selects a random question
-			} while (question[grandom] == null);
+			} while (question[grandom] == null); // this will check to see if the question has already been used
+			
 			String[] answersolutions = new String[4]; //4 is the amount of MC responses
 			answersolutions[0] = answer[grandom];
 			int random = 0;
@@ -93,7 +134,6 @@ public class Assignment_MB2 {
 				if (add == true) {
 					answersolutions[a] = answer[random];
 				}
-				
 			}
 			questioncount++;
 			System.out.println("Question #" + questioncount + ":");
@@ -120,28 +160,30 @@ public class Assignment_MB2 {
 			} while (strinput.length() >= 2 || !strinput.equals("A") && !strinput.equals("B") && !strinput.equals("C") && !strinput.equals("D"));
 			if (strinput.equals(letteranswer)) {
 				score++;
-				System.out.println("Correct! Your score is " + score);
+				System.out.print("Correct!");
 			} else {
-				System.out.println("Whoops! The correct answer was " + letteranswer + "!");
-				System.out.println("Your score is " + score);
+				System.out.print("Incorrect! The correct answer was " + letteranswer + "!");
+			}
+			
+			if (i != intinput-1) {
+				System.out.println(" Your score is " + score);
 			}
 			
 		}
-		System.out.println(intinput);
-		scorepercent = ((double)(score)/intinput) * 100;
-		System.out.println("You got " + scorepercent + "% of the questions correct");
+		scorepercent = Math.round(((double)(score)/intinput) * 10000.0)/100.0;
+		System.out.println("\nYou got " + scorepercent + "% of the questions correct");
 		
 	}
 	public static void main(String[] args) {
 		String inputagain = "Y";
 		Scanner sa = new Scanner(System.in);
 		do {
+			game();
 			do {
-				game();
 				if (inputagain.length() >= 2 || !inputagain.equals("Y") && !inputagain.equals("N")) {
 					System.out.println("Invalid Answer... Please try again");
 				}
-				System.out.println("Would you like to play again? (Y/N) ");
+				System.out.println("Would you like to play again? (Y/N)");
 				inputagain = sa.next().toUpperCase();
 			} while(inputagain.length() >= 2 || !inputagain.equals("Y") && !inputagain.equals("N"));
 		} while (inputagain.equals("Y"));
