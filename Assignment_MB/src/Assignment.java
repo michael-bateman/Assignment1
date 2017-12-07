@@ -180,7 +180,7 @@ public class Assignment {
 				reviewanswer[i] = answer[grandom];
 				for (int d = 0; d < answersolutions.length; d++) {
 					if (strinput.equals(answerselect[d])) {
-						reviewyourchoice[i] = answersolutionsfinal[d] + inputdata[2];
+						reviewyourchoice[i] = answersolutionsfinal[d];
 						d = answersolutions.length; // this will end the loop without forcing break
 					}
 				} 
@@ -210,8 +210,8 @@ public class Assignment {
 					reviewcount++;
 					if (reviewquestion[e] != null) {
 						System.out.println("Review #" + reviewcount + ": " + inputdata[1] + " " +  reviewquestion[e] + "?");
-						System.out.println("Answer: " + reviewanswer[e]);
-						System.out.println("You chose: " + reviewyourchoice[e]);
+						System.out.println("Answer: " + reviewanswer[e] + inputdata[2]);
+						System.out.println("You chose: " + reviewyourchoice[e] + inputdata[2]);
 						System.out.print("Press any key to continue: ");
 						strinput = s.next(); // just acts as a wait
 					} else {
