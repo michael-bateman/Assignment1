@@ -3,13 +3,17 @@ import java.util.Scanner;
 
 public class Question {
 
-	
+	/*
+	 * initializes the question and answer arrays
+	 */
 	private String[] question = null;
 	private String[] answer = null;
 	
 	public Question(String fileName) {
 		
-	
+		/*
+		 * This try/catch is used for reading the .txt files for data
+		 */
 		try {
 			
 			
