@@ -27,7 +27,7 @@ public class Question {
 
 			for (int i = 0; i < numLines; i++) {
 				
-				String line = s.nextLine();	
+				String line = s.nextLine();
 				question[i] = line.substring(0,line.indexOf("|"));
 				answer[i] = line.substring(line.indexOf("|")+1);
 			}

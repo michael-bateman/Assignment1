@@ -226,6 +226,7 @@ public class Assignment {
 			 * This do while loop will do the following:
 			 * 1. check to make sure the input is valid A-D
 			 * 2. Will write out the multiple choice possible answers
+			 * inputdata[2] - this is if there is a "unit" associated
 			 */
 			do {
 				if (strinput.length() >= 2 || !strinput.equals("A") && !strinput.equals("B") && !strinput.equals("C") && !strinput.equals("D")) {
@@ -267,7 +268,7 @@ public class Assignment {
 			}
 			question[grandom] = null; // we need to set null to the question so it can no longer be asked
 			
-		} //end game loop
+		} //end question/game loop
 		
 		scorepercent = Math.round(((double)(score)/intinput) * 10000.0)/100.0; // calculates the percent and rounds the percent to 2 decimals
 		System.out.println("\nYou got " + scorepercent + "% of the questions correct"); // will tell you your percentage of correct questions
