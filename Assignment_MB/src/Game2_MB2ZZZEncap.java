@@ -422,7 +422,6 @@ public class Game2_MB2ZZZEncap {
 		game2.b2.setEnabled(false);
 		game2.b3.setEnabled(false);
 		
-		
 		/*
 		 * Welcome text and instructions
 		 * Welcome!
@@ -434,7 +433,7 @@ public class Game2_MB2ZZZEncap {
 		 * Note: there are nice loading stars
 		 */
 		game2.textArea.setText("Welcome!\n\nWhen a question appears, click the button corresponding to the correct answer\nExample: A) Hydrogen, you would click button 'A'\nLoading ");
-		for (int x = 0; x < 0; x++) { //set to 15
+		for (int x = 0; x < 15; x++) { //set to 15
 			game2.textArea.append("* ");
 			try {
 				Thread.sleep(1000);
@@ -459,8 +458,7 @@ public class Game2_MB2ZZZEncap {
 		game2.frame.repaint();
 		
 		
-		// We create the Question class
-		
+		// We create an instance of the Question class
 		Question q = new Question(inputdata[0]);
 		
 		/*
