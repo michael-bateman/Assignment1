@@ -1,6 +1,6 @@
 # Michael's Chemistry Game
 
-_This project is no longer being updates_
+_This project is no longer being updated_
 
 I made this game part of my Grade 10 Computer Science class. The [first version](https://github.com/michael-bateman/Chemistry-Game/tree/v1) was the text based game. Now, the game has grown to a _almost_ fully functional GUI game.
 
