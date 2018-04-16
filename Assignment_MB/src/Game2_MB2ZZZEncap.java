@@ -5,15 +5,12 @@ import javax.swing.*;
 
 /**
  * This is a build on my Assignment1 adding GUI support for my game
- * What is left to work on:
- * 1. Get the input for the number wider
- * 2. The screen has a weird screen animation when loading a new image
- * 
- * Current Bugs:
- * 	The following elements pictures do not show up:
- * 		Ununhexium
- * 		Wolfram
- * 		Ununquadium
+ * Errors:
+ * 1. The screen has a weird screen animation when loading a new image
+ * 2. The following elements pictures do not show up and will show up as a triangle:
+ * 		a. Ununhexium
+ * 		b. Wolfram
+ * 		c. Ununquadium
  * 
  * @author michael.bateman
  *
@@ -90,6 +87,7 @@ public class Game2_MB2ZZZEncap {
 	*/
 	
 	private Game2_MB2ZZZEncap() {
+		
 
 		// Set's the location of the frame on the screen
 		frame.setLocation(100, 100);
@@ -176,6 +174,9 @@ public class Game2_MB2ZZZEncap {
 		GridBagConstraints c8 = new GridBagConstraints();
 		c8.gridx = 0;
 		c8.gridy = 5;
+		//c8.gridwidth = 2;
+		//textField.setPreferredSize(10);
+		textField.setColumns(5);
 		
 		textField.setText("0");
 		textField.setVisible(false);
@@ -225,6 +226,7 @@ public class Game2_MB2ZZZEncap {
 		c13.gridy = 0;
 		c13.gridwidth = 5;
 		c13.anchor = GridBagConstraints.CENTER;
+		imgarea.setSize(300, 300);
 
 		imgarea = new JLabel(imgicon);
 		frame.add(imgarea, c13);
